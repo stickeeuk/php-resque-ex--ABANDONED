@@ -24,7 +24,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 namespace Resque;
@@ -36,6 +35,7 @@ use Redis;
  * redis. Essentially adds namespace support to Redisent.
  *
  * @package Resque
+ *
  * @author Chris Boulton <chris.boulton@interspire.com>
  * @copyright (c) 2010 Chris Boulton
  * @license http://www.opensource.org/licenses/mit-license.php
@@ -54,7 +54,7 @@ class Api extends Redis
         $this->establishConnection();
     }
 
-    function establishConnection()
+    public function establishConnection()
     {
         $this->pconnect($this->host, (int)$this->port, (int)$this->timeout, getmypid());
         if ($this->password !== null) {

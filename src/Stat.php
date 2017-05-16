@@ -24,7 +24,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 namespace Resque;
@@ -33,6 +32,7 @@ namespace Resque;
  * Resque statistic management (jobs processed, failed, etc)
  *
  * @package Resque
+ *
  * @author Chris Boulton <chris@bigcommerce.com>
  * @license http://www.opensource.org/licenses/mit-license.php
  */
@@ -56,7 +56,7 @@ class Stat
      * @param string $stat The name of the statistic to increment.
      * @param int $by The amount to increment the statistic by.
      *
-     * @return boolean True if successful, false if not.
+     * @return bool True if successful, false if not.
      */
     public static function incr($stat, $by = 1)
     {
@@ -69,7 +69,7 @@ class Stat
      * @param string $stat The name of the statistic to decrement.
      * @param int $by The amount to decrement the statistic by.
      *
-     * @return boolean True if successful, false if not.
+     * @return bool True if successful, false if not.
      */
     public static function decr($stat, $by = 1)
     {
@@ -81,7 +81,7 @@ class Stat
      *
      * @param string $stat The name of the statistic to delete.
      *
-     * @return boolean True if successful, false if not.
+     * @return bool True if successful, false if not.
      */
     public static function clear($stat)
     {

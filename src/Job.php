@@ -24,7 +24,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 namespace Resque;
@@ -38,6 +37,7 @@ use Resque_Job_Creator;
  * Resque job.
  *
  * @package Resque/Job
+ *
  * @author Chris Boulton <chris@bigcommerce.com>
  * @license http://www.opensource.org/licenses/mit-license.php
  */
@@ -81,7 +81,7 @@ class Job
      * @param string $queue The name of the queue to place the job in.
      * @param string $class The name of the class that contains the code to execute the job.
      * @param array $args Any optional arguments that should be passed when the job is executed.
-     * @param boolean $monitor Set to true to be able to monitor the status of a job.
+     * @param bool $monitor Set to true to be able to monitor the status of a job.
      *
      * @return string
      */
@@ -137,7 +137,7 @@ class Job
             return false;
         }
 
-        return new Job($queue, $payload);
+        return new self($queue, $payload);
     }
 
     /**
@@ -221,6 +221,7 @@ class Job
      * associated with the job with the supplied arguments.
      *
      * @return bool
+     *
      * @throws ResqueException When the job's class could not be found or it does not contain a perform method.
      */
     public function perform()
@@ -308,4 +309,3 @@ class Job
         );
     }
 }
-

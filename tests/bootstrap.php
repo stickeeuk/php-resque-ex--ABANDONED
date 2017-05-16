@@ -24,15 +24,14 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
-
-require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . '/../vendor/autoload.php';
 
 /**
  * Resque test bootstrap file - sets up a test environment.
  *
  * @package        Resque/Tests
+ *
  * @author        Chris Boulton <chris@bigcommerce.com>
  * @license        http://www.opensource.org/licenses/mit-license.php
  */
@@ -57,13 +56,12 @@ usleep(500000);
 if ($returnVar != 0) {
     echo "Cannot start redis-server.\n";
     exit(1);
-
 }
 
 // Get redis port from conf
 $config = file_get_contents(REDIS_CONF);
 if (!preg_match('#^\s*port\s+([0-9]+)#m', $config, $matches)) {
-    echo "Could not determine redis port from redis.conf";
+    echo 'Could not determine redis port from redis.conf';
     exit(1);
 }
 
@@ -115,7 +113,7 @@ if (function_exists('pcntl_signal')) {
     // Override INT and TERM signals, so they do a clean shutdown and also
     // clean up redis-server as well.
     $sigint = function () {
-        exit;
+        exit(0);
     };
 
     pcntl_signal(SIGINT, $sigint);

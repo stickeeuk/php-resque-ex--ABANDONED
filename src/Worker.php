@@ -24,7 +24,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 namespace Resque;
@@ -40,6 +39,7 @@ use RuntimeException;
  * off the queues, running them and handling the result.
  *
  * @package Resque/Worker
+ *
  * @author Chris Boulton <chris@bigcommerce.com>
  * @license http://www.opensource.org/licenses/mit-license.php
  */
@@ -74,12 +74,12 @@ class Worker
     protected $hostname;
 
     /**
-     * @var boolean True if on the next iteration, the worker should shutdown.
+     * @var bool True if on the next iteration, the worker should shutdown.
      */
     protected $shutdown = false;
 
     /**
-     * @var boolean True if this worker is paused.
+     * @var bool True if this worker is paused.
      */
     protected $paused = false;
 
@@ -90,7 +90,6 @@ class Worker
 
     /**
      * @var Job Current job, if any, being processed by this worker.
-     *
      */
     protected $currentJob = null;
 
@@ -126,7 +125,7 @@ class Worker
      *
      * @param string $workerId ID of the worker.
      *
-     * @return boolean True if the worker exists, false if not.
+     * @return bool True if the worker exists, false if not.
      */
     public static function exists($workerId)
     {
@@ -142,7 +141,7 @@ class Worker
      */
     public static function find($workerId)
     {
-        if (!self::exists($workerId) || false === strpos($workerId, ":")) {
+        if (!self::exists($workerId) || false === strpos($workerId, ':')) {
             return false;
         }
 
@@ -343,7 +342,7 @@ class Worker
     /**
      * Attempt to find a job from the top of one of the queues for this worker.
      *
-     * @return object|boolean Instance of Resque_Job if a job is found, false if not.
+     * @return object|bool Instance of Resque_Job if a job is found, false if not.
      */
     public function reserve()
     {
@@ -377,7 +376,7 @@ class Worker
      * If * is found in the list of queues, every queue will be searched in
      * alphabetic order. (@see $fetch)
      *
-     * @param boolean $fetch If true, and the queue is set to *, will fetch
+     * @param bool $fetch If true, and the queue is set to *, will fetch
      * all queue names from redis.
      *
      * @return array Array of associated queues.
@@ -633,7 +632,7 @@ class Worker
     public function unregisterWorker()
     {
         if (is_object($this->currentJob)) {
-            $this->currentJob->fail(new DirtyExitException);
+            $this->currentJob->fail(new DirtyExitException());
         }
 
         $id = (string)$this;
@@ -692,7 +691,7 @@ class Worker
      *
      * @param string $message Message to output.
      *
-     * @return  boolean True if the message is logged
+     * @return  bool True if the message is logged
      */
     public function log($message, $code = self::LOG_TYPE_INFO)
     {
@@ -729,9 +728,8 @@ class Worker
         if (($this->logLevel === self::LOG_NORMAL || $this->logLevel === self::LOG_VERBOSE) &&
             $code !== self::LOG_TYPE_DEBUG
         ) {
-
             if ($this->logger === null) {
-                fwrite($this->logOutput, "[" . date('c') . "] " . $message . "\n");
+                fwrite($this->logOutput, '[' . date('c') . '] ' . $message . "\n");
             } else {
                 switch ($code) {
                     case self::LOG_TYPE_INFO:
@@ -750,10 +748,9 @@ class Worker
                         $this->logger->addAlert($message, $extra);
                 }
             }
-
-        } else if ($code === self::LOG_TYPE_DEBUG && $this->logLevel === self::LOG_VERBOSE) {
+        } elseif ($code === self::LOG_TYPE_DEBUG && $this->logLevel === self::LOG_VERBOSE) {
             if ($this->logger === null) {
-                fwrite($this->logOutput, "[" . date('c') . "] " . $message . "\n");
+                fwrite($this->logOutput, '[' . date('c') . '] ' . $message . "\n");
             } else {
                 $this->logger->addDebug($message, $extra);
             }

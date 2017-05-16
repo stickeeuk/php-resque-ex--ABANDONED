@@ -24,7 +24,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 namespace Resque\Tests;
@@ -43,6 +42,7 @@ use stdClass;
  * Resque_Job tests.
  *
  * @package        Resque/Tests
+ *
  * @author        Chris Boulton <chris@bigcommerce.com>
  * @license        http://www.opensource.org/licenses/mit-license.php
  */
@@ -81,7 +81,7 @@ class JobTest extends TestCase
      */
     public function testObjectArgumentsCannotBePassedToJob()
     {
-        $args = new stdClass;
+        $args = new stdClass();
         $args->test = 'somevalue';
         Resque::enqueue('jobs', TestJob::class, $args);
     }
@@ -290,5 +290,4 @@ class JobTest extends TestCase
         $this->assertEquals(Resque::deQueue($queue, $test), 1);
         $this->assertEquals(Resque::size($queue), 2);
     }
-
 }

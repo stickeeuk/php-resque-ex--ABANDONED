@@ -24,7 +24,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 namespace Resque\Failure;
@@ -35,6 +34,7 @@ use Resque\Resque;
  * Redis backend for storing failed Resque jobs.
  *
  * @package Resque
+ *
  * @author Chris Boulton <chris@bigcommerce.com>
  * @license http://www.opensource.org/licenses/mit-license.php
  */
@@ -61,7 +61,7 @@ class Redis implements FailureInterface
         Resque::Redis()->setex('failed:' . $payload['id'], 3600 * 14, serialize($data));
     }
 
-    static public function get($jobId)
+    public static function get($jobId)
     {
         $data = Resque::Redis()->get('failed:' . $jobId);
 

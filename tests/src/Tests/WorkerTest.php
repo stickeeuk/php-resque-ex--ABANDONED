@@ -24,7 +24,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 namespace Resque\Tests;
@@ -39,6 +38,7 @@ use Resque\Worker;
  * Resque_Worker tests.
  *
  * @package     Resque/Tests
+ *
  * @author      Chris Boulton <chris@bigcommerce.com>
  * @license     http://www.opensource.org/licenses/mit-license.php
  */
@@ -373,5 +373,4 @@ class WorkerTest extends TestCase
         $this->assertEquals(1, count($lines) - 1);
         $this->assertEquals('[' . $now . '] x', $lines[0]);
     }
-
 }

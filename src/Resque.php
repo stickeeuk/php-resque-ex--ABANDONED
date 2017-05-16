@@ -24,7 +24,6 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 namespace Resque;
@@ -33,6 +32,7 @@ namespace Resque;
  * Base Resque class.
  *
  * @package Resque
+ *
  * @author Chris Boulton <chris@bigcommerce.com>
  * @license http://www.opensource.org/licenses/mit-license.php
  */
@@ -164,7 +164,7 @@ class Resque
     {
         $item = self::redis()->lpop(self::QUEUE_PREFIX . $queue);
         if (!$item) {
-            return null;
+            return;
         }
 
         return json_decode($item, true);
@@ -176,7 +176,7 @@ class Resque
      * @param string $queue The name of the queue to fetch an item from.
      * @param array $items
      *
-     * @return integer number of deleted items
+     * @return int number of deleted items
      */
     public static function deQueue($queue, $items = [])
     {
@@ -198,7 +198,7 @@ class Resque
      * @param string $queue The name of the queue
      * @param array $items
      *
-     * @return integer number of deleted items
+     * @return int number of deleted items
      */
     private static function removeItems($queue, $items = [])
     {
@@ -256,7 +256,6 @@ class Resque
         $decoded = json_decode($string, true);
 
         foreach ($items as $key => $val) {
-
             if (
                 self::matchesClassNameOnly($key, $val, $decoded) ||
                 self::matchesClassNameWithArgs($key, $val, $decoded) ||
@@ -377,7 +376,7 @@ class Resque
      * @param string $queue The name of the queue to place the job in.
      * @param string $class The name of the class that contains the code to execute the job.
      * @param array $args Any optional arguments that should be passed when the job is executed.
-     * @param boolean $trackStatus Set to true to be able to monitor the status of a job.
+     * @param bool $trackStatus Set to true to be able to monitor the status of a job.
      *
      * @return string
      */

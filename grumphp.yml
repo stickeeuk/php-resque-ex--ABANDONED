@@ -57,3 +57,4 @@ parameters:
       triggered_by: [php]
     securitychecker: ~
     phplint: ~
+    phpunit: ~

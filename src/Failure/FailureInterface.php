@@ -24,14 +24,15 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- *
  */
 
 namespace Resque\Failure;
+
 /**
  * Interface that all failure backends should implement.
  *
  * @package Resque
+ *
  * @author Chris Boulton <chris@bigcommerce.com>
  * @license http://www.opensource.org/licenses/mit-license.php
  */
@@ -54,5 +55,5 @@ interface FailureInterface
      *
      * @return object Object containing details of the failed job.
      */
-    static public function get($jobId);
+    public static function get($jobId);
 }
