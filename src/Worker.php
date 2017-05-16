@@ -137,7 +137,7 @@ class Worker
      *
      * @param string $workerId The ID of the worker.
      *
-     * @return Worker Instance of the worker. False if the worker does not exist.
+     * @return Worker|false Instance of the worker. False if the worker does not exist.
      */
     public static function find($workerId)
     {
