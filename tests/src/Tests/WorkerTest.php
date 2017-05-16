@@ -295,7 +295,7 @@ class WorkerTest extends TestCase
         $worker->logLevel = Worker::LOG_VERBOSE;
         $worker->logOutput = fopen('php://memory', 'r+');
 
-        $message = ['message' => 'x', 'data' => ''];
+        $message = ['message' => 'x', 'data' => ['worker' => '']];
 
         $this->assertEquals(true, $worker->log($message, Worker::LOG_TYPE_DEBUG));
         $this->assertEquals(true, $worker->log($message, Worker::LOG_TYPE_INFO));
@@ -317,7 +317,7 @@ class WorkerTest extends TestCase
         $worker->logLevel = Worker::LOG_NORMAL;
         $worker->logOutput = fopen('php://memory', 'r+');
 
-        $message = ['message' => 'x', 'data' => ''];
+        $message = ['message' => 'x', 'data' => ['worker' => '']];
 
         $this->assertEquals(false, $worker->log($message, Worker::LOG_TYPE_DEBUG));
         $this->assertEquals(true, $worker->log($message, Worker::LOG_TYPE_INFO));
@@ -361,7 +361,7 @@ class WorkerTest extends TestCase
         $worker->logLevel = Worker::LOG_NORMAL;
         $worker->logOutput = fopen('php://memory', 'r+');
 
-        $message = ['message' => 'x', 'data' => ''];
+        $message = ['message' => 'x', 'data' => ['worker' => '']];
 
         $now = date('c');
         $this->assertEquals(true, $worker->log($message, Worker::LOG_TYPE_INFO));
