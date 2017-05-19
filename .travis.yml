@@ -1,10 +1,23 @@
 language: php
+dist: trusty
 php:
-  - "7.0"
-  - "7.1"
+- '7.0'
+- '7.1'
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y redis-server
-  - phpenv config-add tests/misc/phpconfig.ini
+- sudo apt-get -qq update
+- sudo apt-get install -y redis-server
+- phpenv config-add tests/misc/phpconfig.ini
 before_script:
-  - composer install
+- composer install
+script:
+- phpunit
+- sonar-scanner
+addons:
+  sonarqube:
+    organization: stickee
+    token:
+      secure: lK6J08mCXq7OTF80nBeFVTtgvbryezfmfMhG3qON5DhfHkOJFBCbGIwZwrWshrrasTGYsYhR13GBtB+93ilCQYofbn0MV2GzIYd2v88INmuYGfCrp6vF90OBYzsDKH7z4Hut2agzdHgOEBN/1O/rdwAhkTJGWzlSwjlauZo4hPMTflSFaEhsKXwy5LWb7ysXK57b/y+9xboC0T63l3R8pzTtalXCbJa2pV0dYyKLg6W/xBIFYNJwobo+MTrqy56nr9DoUeVYaC3gO5wy527Mrt0YXSolzvRkrO6uvGYKF/393X6W7AhoWdYZ9AcMEIaxRSpPapxQQvmp1A/BIS6EOaSa8pVpoWIxmR79UZ8qYCYhyVKbGhRwe8iudHuTiYFsA4HMqHsMdlgNbpVDSFSmSQBCm7swct5DD3VllB/t0whVLKDBPzDgxk6GK+2PngM/vNfwctZD0RoVTrtyEU+KA1vUvD7Xkb8ek7p7Z2FHdlyouIYmW5TyIexOY3EEBks55urXAW7hG+ZXMoTeHaX/US9Mxv30Harb75E+lWw5O19dX8fRvnMA4zIXYEsOUNVZus7jqYrHqpDGJAWJ2QdKGkSVn4kS2tssQHHwgNKkQnOfmLexe4RHFBGpsPqghUEg8anMHqvB8bXL+0UOvNNJGu9u2u9kjmZbOqrAm9z4teU=
+    github_token:
+      secure: aQGlkvmWDujQB9CMyy/MyoNQYkgaaiuXCW2UeSpGKTQZabcEyDw3rC3IdZ+i/lvhQx+aXvcJk28nI2MVr6THd+Wi9lTR+Xtsk6DVC+i+Q7PqTOczzxFpAe6oPJ4wLVh+TDWIPHBH7edhDPaKdsYeK/oBiae6eHKrrRldiTBoSzW4W8x7nQ7sxnSAnTzM1jAStaIRGmARunMvQA0DuW2Gz5Y9lXEujbkqB4FcK9WWO74RS+ME2bjn6FoHJ/GLVH5SLiVpBCtHTdiGQOvnlhTDX3vg0awMOA74WYECklV8lyfu9EAgDdhz/wTEGZCsjQwui94nX0xDqA8jHti+4URt7gp+iCW809Teh4cQiLtL0s4pQQWaUfTganTvPeNyE7rPxo0JImDAK2iTLwA1VehmLjqGp/s1qUnS4BowWpN7Dw/07JI40HlpyLlN2up3vayc6sOS3IEf3NMRm0UCoOTPnwOcx4XPUmP+Q1GRN3qdPnrpbtoYe9NJyy2oIVs2HQUADB9UJL7h2SVA8iDdmMs7hBSkbqqoEysW78Kd25sIPq6uNf29ghbNu355IsKrOn66FJgUo0FWHOoSqyCzyLrzHAlNo2rnR3YEZUFIGIZ5h86viNj0+m2Yj1v1tweAF7t1kYCWIfnDYC7fSfxSKFe2kGN7B69bV/MVZ3xaoipkzbY=
+
+
