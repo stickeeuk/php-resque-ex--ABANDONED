@@ -101,7 +101,7 @@ If one of these two environement variable is missing, it will default to *Rotati
 
 ## Requirements ##
 
-* PHP 5.3+
+* PHP 7.0+
 * Redis 2.2+
 
 ## Contributors ##
